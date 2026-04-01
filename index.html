@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>For My Jaan 💖</title>
+
+<style>
+body {
+    margin:0;
+    font-family: 'Arial';
+    text-align:center;
+    color:white;
+    background: linear-gradient(-45deg,#ff758c,#ff7eb3,#ff4d6d,#ff99ac);
+    background-size: 400% 400%;
+    animation: bg 10s infinite;
+}
+
+@keyframes bg {
+    0%{background-position:0%}
+    50%{background-position:100%}
+    100%{background-position:0%}
+}
+
+h1 {
+    margin-top:20px;
+    font-size:28px;
+}
+
+.typing {
+    font-size:18px;
+    border-right:2px solid white;
+    width:0;
+    margin:auto;
+    overflow:hidden;
+    white-space:nowrap;
+    animation: typing 5s steps(40,end) forwards, blink .8s infinite;
+}
+
+@keyframes typing {
+    from { width:0 }
+    to { width:80% }
+}
+
+@keyframes blink {
+    50% { border-color:transparent }
+}
+
+/* Images */
+img {
+    width:180px;
+    border-radius:20px;
+    margin:10px;
+    box-shadow:0 0 20px pink;
+}
+
+/* Box */
+.box {
+    background: rgba(255,255,255,0.2);
+    padding:15px;
+    margin:15px;
+    border-radius:15px;
+}
+
+/* Buttons */
+button {
+    padding:10px;
+    border:none;
+    border-radius:10px;
+    margin:5px;
+    background:white;
+    color:#ff4d6d;
+    font-weight:bold;
+}
+
+/* Floating Hearts */
+.heart {
+    position: fixed;
+    color: pink;
+    font-size:20px;
+    animation: float 5s linear infinite;
+}
+
+@keyframes float {
+    0% {transform: translateY(0);}
+    100% {transform: translateY(-100vh);}
+}
+</style>
+</head>
+
+<body>
+
+<h1>💖 I Miss You Anshu Jii 💖</h1>
+
+<div class="typing">
+Meri jaan, meri guchimuchi, meri maharani jii 🥺💕
+</div>
+
+<br>
+
+<button onclick="playMusic()">Play Music 🎵</button>
+
+<audio id="music" loop>
+<source src="song.mp3">
+</audio>
+
+<!-- Photos -->
+<img src="photo1.jpg">
+<img src="photo2.jpg">
+
+<!-- Shayari -->
+<div class="box" id="shayariBox">
+"Tum meri aadat nahi... meri zarurat ho 💖"
+</div>
+
+<button onclick="changeShayari()">More Shayari 🥺</button>
+
+<!-- Open When -->
+<div class="box">
+<h3>💌 Open When...</h3>
+<button onclick="showMsg('sad')">Sad</button>
+<button onclick="showMsg('miss')">Miss me</button>
+<button onclick="showMsg('love')">Love</button>
+<p id="openMsg"></p>
+</div>
+
+<script>
+
+// MUSIC
+function playMusic(){
+    document.getElementById("music").play();
+}
+
+// SHAYARI
+const shayari = [
+"Tum meri kismat nahi... meri duniya ho ❤️",
+"Door rehkar bhi tum sabse kareeb lagti ho 🥺",
+"Har raat tumhari yaadon se baat hoti hai 🌙",
+"Tumse hi shuru, tumpe hi khatam meri duniya 💕",
+"Meri maharani jii, aap meri life ka best part ho 😘"
+];
+
+function changeShayari(){
+    let r = Math.floor(Math.random()*shayari.length);
+    document.getElementById("shayariBox").innerHTML = shayari[r];
+}
+
+// OPEN WHEN
+function showMsg(type){
+    let msg="";
+    if(type=="sad") msg="Mat udaas ho meri jaan, main hamesha tumhare saath hoon 💖";
+    if(type=="miss") msg="Tum yaad nahi aati... tum toh hamesha dil mein rehti ho 🥺";
+    if(type=="love") msg="I love you meri guchimuchi 💕";
+    document.getElementById("openMsg").innerHTML=msg;
+}
+
+// HEARTS
+setInterval(()=>{
+    let heart = document.createElement("div");
+    heart.innerHTML="💖";
+    heart.className="heart";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(Math.random()*20+10)+"px";
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{heart.remove()},5000);
+},300);
+
+</script>
+
+</body>
+</html>
